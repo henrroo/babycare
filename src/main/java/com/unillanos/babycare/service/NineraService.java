@@ -1,16 +1,24 @@
 package com.unillanos.babycare.service;
 
 import com.unillanos.babycare.model.Ninera;
+import com.unillanos.babycare.repository.NineraRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
-public interface NineraService {
+@Service
+@RequiredArgsConstructor
+public class NineraService {
 
-    List<Ninera> getAllNineras();
-    Ninera createNinera(Ninera ninera);
-    List<Ninera> getDisponibles();
-    List<Ninera> getDisponibles(LocalDateTime fechaHora, int duracionHoras);
-    void actualizarDisponibilidad(Ninera ninera, LocalDateTime fechaHora, int duracionHoras);
+    private final NineraRepository nineraRepository;
+
+    public List<Ninera> getAllNineras() {
+        return nineraRepository.findAll();
+    }
+
+    public Ninera saveNinera(Ninera ninera) {
+        return nineraRepository.save(ninera);
+    }
 
 }
