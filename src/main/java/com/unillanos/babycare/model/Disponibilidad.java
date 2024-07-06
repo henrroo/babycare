@@ -25,8 +25,13 @@ public class Disponibilidad {
     @JoinColumn(name = "id_ninera")
     private Ninera ninera;
 
+    @Column(name = "fecha")
     private LocalDate fecha;
+
+    @Column(name = "hora_inicio")
     private LocalTime horaInicio;
+
+    @Column(name = "hora_fin")
     private LocalTime horaFin;
 
 }
